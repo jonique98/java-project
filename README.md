@@ -49,6 +49,7 @@ id,title,type,author_id,editor_id,translator_id
 **Database.showtables() : 데이터베이스의 테이블 목록 출력**
 **Table.show() : 테이블의 데이터 출력**
 **Table.describe() : 테이블 메타 데이터 출력**
+
 <img width="707" alt="스크린샷 2024-01-01 16 50 26" src="https://github.com/jonique98/java-project/assets/104954561/9f74ddec-258e-4cd3-8d9c-14d021c3040c">
 
 **Table.head() : 테이블의 0-5번 줄(행) 데이터**
@@ -64,7 +65,7 @@ id,title,type,author_id,editor_id,translator_id
 **Table.sort(byINdexOfColumn, isAscending, isNullFirst) : 테이블의 byIndexOfColumn 컬럼을 기준으로 정렬**
 <img width="927" alt="스크린샷 2024-01-01 16 52 44" src="https://github.com/jonique98/java-project/assets/104954561/cd354e82-253d-43b1-a344-5b3dcfb97ac6">
 
-**Table.crossJoin(rightTable) : 테이블과 rightTable의 모든 데이터를 조합한 테이블 반환(rightTable이 오른쪽)**v
+**Table.crossJoin(rightTable) : 테이블과 rightTable의 모든 데이터를 조합한 테이블 반환(rightTable이 오른쪽)**
 <img width="1440" alt="스크린샷 2024-01-01 16 53 35" src="https://github.com/jonique98/java-project/assets/104954561/9c421799-ec6b-48a5-90cd-6bd8f913a0a8">
 
 **Table innerJoin(Table rightTable, List<JoinColumn> joinColumns): 두번째 인자 columns르 기준으로 두 테이블을 조인**
