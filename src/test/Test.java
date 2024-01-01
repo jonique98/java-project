@@ -17,7 +17,9 @@ public class Test {
         Database.createTable(new File("rsc/books.csv"));
 
 //        2) 데이터베이스의 테이블 목록을 출력
+       System.out.println("데이터베이스의 테이블 목록을 출력한다");
        Database.showTables();
+       System.out.println();
 
 //        3) 데이터베이스로부터 테이블을 얻는다.
         Table books = Database.getTable("books");
@@ -28,17 +30,23 @@ public class Test {
         Table testTable = books;
 
 //        4) 테이블 내용을 출력한다.
+       System.out.println("테이블 내용을 출력한다");
        testTable.show();
+       System.out.println();
 
 //        5) 테이블 요약 정보를 출력한다.
+       System.out.println("테이블 요약 정보를 출력한다");
        testTable.describe();
+       System.out.println();
 
         Table headTable;
 
 //        5) 처음 5줄 출력 (새 테이블)
+       System.out.println("처음 5줄 출력 (새 테이블)");
        testTable.head().show();
        headTable = testTable.head();
        System.out.println("identity test for head(): " + (testTable.equals(headTable) ? "Fail" : "Pass"));
+       System.out.println();
 
 //        6) 지정한 처음 n줄 출력 (새 테이블)
 //        testTable.head(10).show();
@@ -48,60 +56,80 @@ public class Test {
         Table tailTable;
 
 //        7) 마지막 5줄 출력 (새 테이블)
+       System.out.println("마지막 5줄 출력 (새 테이블)");
        testTable.tail().show();
        tailTable = testTable.tail();
        System.out.println("identity test for tail(): " + (testTable.equals(tailTable) ? "Fail" : "Pass"));
+       System.out.println();
 
 //        8) 지정한 마지막 n줄 출력 (새 테이블)
+       System.out.println("지정한 마지막 n줄 출력 (새 테이블)");
        testTable.tail(10).show();
        tailTable = testTable.tail(10);
        System.out.println("identity test for tail(n): " + (testTable.equals(tailTable) ? "Fail" : "Pass"));
+       System.out.println();
 
         Table selectedRowsTable;
 
 //        9) 지정한 행 인덱스 범위(begin<=, <end)의 서브테이블을 얻는다. (새 테이블), 존재하지 않는 행 인덱시 전달시 예외발생해도 됨.
+       System.out.println("지정한 행 인덱스 범위(begin<=, <end)의 서브테이블을 얻는다.");
        testTable.selectRows(0, 5).show();
        selectedRowsTable = testTable.selectRows(0, 5);
        System.out.println("identity test for selectRows(range): " + (testTable.equals(selectedRowsTable) ? "Fail" : "Pass"));
+       System.out.println();
 
 //        10) 지정한 행 인덱스로만 구성된 서브테이블을 얻는다. (새 테이블), 존재하지 않는 행 인덱시 전달시 예외발생해도 됨.
+       System.out.println("지정한 행 인덱스로만 구성된 서브테이블을 얻는다.");
        testTable.selectRowsAt(7, 0, 4).show();
        selectedRowsTable = testTable.selectRowsAt(7, 0, 4);
        System.out.println("identity test for selectRowsAt(indices): " + (testTable.equals(selectedRowsTable) ? "Fail" : "Pass"));
+       System.out.println();
 
         Table selectedColumnsTable;
 
 //        11) 지정한 열 인덱스 범위(begin<=, <end)의 서브테이블을 얻는다. (새 테이블), 존재하지 않는 열 인덱시 전달시 예외발생해도 됨.
+       System.out.println("지정한 열 인덱스 범위(begin<=, <end)의 서브테이블을 얻는다.");
        testTable.selectColumns(0, 4).show();
        selectedColumnsTable = testTable.selectColumns(0, 4);
        System.out.println("identity test for selectColumns(range): " + (testTable.equals(selectedColumnsTable) ? "Fail" : "Pass"));
+       System.out.println();
 
 //        12) 지정한 열 인덱스로만 구성된 서브테이블을 얻는다. (새 테이블), 존재하지 않는 열 인덱시 전달시 예외발생해도 됨.
-//        testTable.selectColumnsAt(4, 5, 3).show();
-//        selectedColumnsTable = testTable.selectColumnsAt(4, 5, 3);
-//        System.out.println("identity test for selectColumnsAt(indices): " + (testTable.equals(selectedColumnsTable) ? "Fail" : "Pass"));
+       System.out.println("지정한 열 인덱스로만 구성된 서브테이블을 얻는다.");
+       testTable.selectColumnsAt(4, 5, 3).show();
+       selectedColumnsTable = testTable.selectColumnsAt(4, 5, 3);
+       System.out.println("identity test for selectColumnsAt(indices): " + (testTable.equals(selectedColumnsTable) ? "Fail" : "Pass"));
+       System.out.println();
 
         Table sortedTable;
 
 //        13) 테이블을 기준 열인덱스(5)로 정렬한다. 이 때, 오름차순(true), null값은 나중에(false)(원본 테이블 정렬), 존재하지 않는 열 인덱시 전달시 예외발생해도 됨.
-//        testTable.sort(5, true, false).show();
-//        sortedTable = testTable.sort(5, true, false);
-//        System.out.println("identity test for sort(index, asc, nullOrder): " + (!testTable.equals(sortedTable) ? "Fail" : "Pass"));
+       System.out.println("테이블을 기준 열인덱스(5)로 정렬한다. 이 때, 오름차순(true), null값은 나중에(false)(원본 테이블 정렬)");
+       testTable.sort(5, true, false).show();
+       sortedTable = testTable.sort(5, true, false);
+       System.out.println("identity test for sort(index, asc, nullOrder): " + (!testTable.equals(sortedTable) ? "Fail" : "Pass"));
+       System.out.println();
 
 //        14) 테이블을 기준 열인덱스(5)로 정렬한다. 이 때, 내림차순(false), null값은 앞에(true)(새 테이블), 존재하지 않는 열 인덱시 전달시 예외발생해도 됨.
-//        Database.sort(testTable, 5, false, true).show();
-//        sortedTable = Database.sort(testTable, 5, false, true);
-//        System.out.println("identity test for Database.sort(index, asc, nullOrder): " + (testTable.equals(sortedTable) ? "Fail" : "Pass"));
+       System.out.println("테이블을 기준 열인덱스(5)로 정렬한다. 이 때, 내림차순(false), null값은 앞에(true)(새 테이블)");
+       Database.sort(testTable, 5, false, true).show();
+       sortedTable = Database.sort(testTable, 5, false, true);
+       System.out.println("identity test for Database.sort(index, asc, nullOrder): " + (testTable.equals(sortedTable) ? "Fail" : "Pass"));
+       System.out.println();
 
         Table rightTable = authors;
 
 //        15) cross join
-//        Table crossJoined = testTable.crossJoin(rightTable);
-//        crossJoined.show();
+       System.out.println("cross join 실행한다");
+       Table crossJoined = testTable.crossJoin(rightTable);
+       crossJoined.show();
+       System.out.println();
 
 //        16) inner join
-//        Table innerJoined = testTable.innerJoin(rightTable, List.of(new JoinColumn("author_id", "id")));
-//        innerJoined.show();
+       System.out.println("inner join 실행한다");
+       Table innerJoined = testTable.innerJoin(rightTable, List.of(new JoinColumn("author_id", "id")));
+       innerJoined.show();
+       System.out.println();
 
         // rightTable = translators;
 
@@ -133,13 +161,14 @@ public class Test {
        testTable.selectRowsAt(selectedRowIndex).show();
        testTable.describe();
        if (testTable.getColumn(selectedColumnIndex).isNumericColumn())
-           testTable.getColumn(selectedColumnName).setValue(selectedRowIndex, "Sample");
+           testTable.getColumn(selectedColumnName).setValue(selectedRowIndex, "sample");
        else
            testTable.getColumn(selectedColumnName).setValue(selectedRowIndex, "2023");
        System.out.println("Column " + selectedColumnName + " has been changed");
        System.out.println("*** after setValue ***");
        testTable.selectRowsAt(selectedRowIndex).show();
        testTable.describe();
+       System.out.println();
 
 //        21) T getValue(int index, Class<T> t) or String getValue(int index) 호출 전후 비교
        System.out.println("*** before getValue ***");
@@ -156,5 +185,6 @@ public class Test {
            String value = testTable.getColumn(selectedColumnName).getValue(selectedRowIndex);
            System.out.println("The string value in (" + selectedRowIndex + ", " + selectedColumnIndex + ") is " + value);
        }
+       System.out.println();
     }
 }
